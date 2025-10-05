@@ -1,10 +1,13 @@
 import os
 from flask import Flask, send_from_directory
+from flask_cors import CORS
 from .config import Config
 
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
+
+    CORS(app)
 
     # Blueprints
     from app.api import videos, windows, health
